@@ -27,7 +27,19 @@ fn main() {
    println!("{}",Color::Red == Color::Blue);
    println!("{}",Color::Red == Color::Red);
 
-    //Option
-    //Result
+    //Option = Some(X) | None
+
+    let x:Option<i32> = None;
+    let x: Option<i32> =Some(-11);
+    println!("Option :{:?}",x);
+    //Result = Ok(5) | Err("invalid divison")
+
+    let res: Result<u32, String> = Ok(5);
+    let res: Result<u32, String> =Err( "Division By Zero not permitted".to_string());
+    println!("result:{:?}", res)
+
+
+
+
 
 }
