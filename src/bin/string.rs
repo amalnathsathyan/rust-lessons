@@ -56,16 +56,15 @@ fn main() {
 
     //mutate a string
 
-    // Add String from string literall 
+    // Add String from string literall
     let mut msg: String = "Hello Rust".to_string();
-    msg+="🦀";
-    println!("Mutated String, {}",msg);
+    msg += "🦀";
+    println!("Mutated String, {}", msg);
 
     let lang = "Rust";
-    let emoji= "🦀";
+    let emoji = "🦀";
 
     let msg = format!("Hello {lang} {emoji}");
 
-    println!("String, {}",msg);
-
+    println!("String, {}", msg);
 }

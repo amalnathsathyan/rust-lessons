@@ -1,15 +1,14 @@
 #![allow(unused)]
 
-
-fn main(){
+fn main() {
     // +, -, *, /
-    let a:i32 = 1;
-    let b:i32 = 2;
+    let a: i32 = 1;
+    let b: i32 = 2;
 
-    let c:i32 = a+b;
-    let c = a-b;
-    let c= a*b;
-    let c = a/b;
+    let c: i32 = a + b;
+    let c = a - b;
+    let c = a * b;
+    let c = a / b;
 
     println!("It will get rounded to zero, (1/2=) {}", c);
 
@@ -18,7 +17,7 @@ fn main(){
     // -1 % 2 = -1
     let a = -1;
     let b = 2;
-    let rem = a%b;
+    let rem = a % b;
 
     println!("{a} % {b} = {rem}");
 
@@ -37,16 +36,16 @@ fn main(){
 
     //Bitwise
     //101
-    let a:u64 = 5;
+    let a: u64 = 5;
     //011
-    let a:u64 = 3;
+    let a: u64 = 3;
     // a & b returns if atleast one position is similar in binary
     println!(" a & b = {:03b}", a & b);
     println!("a | b = {:03b}", a | b);
     //exclusive or
     println!("a ^ b = {:03b}", a ^ b);
     //negation
-     println!("!a = {:03b}", !a);
+    println!("!a = {:03b}", !a);
     //shift
     println!(" 1 << 3 = {}", 1u32 << 3);
     println!(" 1 << 3 = {:03b}", 1u32 << 3);
