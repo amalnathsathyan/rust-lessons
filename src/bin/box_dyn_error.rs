@@ -44,7 +44,44 @@ fn f3()-> Result<(),Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn main(){
+//but in production standard error codes are implemented
+//to demonstrate
+
+use std::env;
+use std::fs::File;
+use std::io::Read;
+use std::num::ParseIntError;
+
+use hello_rust::foo::print;
+
+
+//read has std error type
+fn read(src_path:&str) -> Result<Vec<String>,std::io::Error> {
+    let mut src_file = File::open(src_path)?;
+    let mut data = String::new();
+    src_file.read_to_string(&mut data)?;
+    let lines: Vec<String> = data.trim().split('\n').map(|s| s.to_string()).collect();
+    Ok(lines)
+}
+
+//sum function has parseinterror type
+fn sum(lines: Vec<String>) -> Result<i32,ParseIntError> {
+    let mut sum = 0;
+    for line in lines {
+        let num:i32 = line.parse()?;
+        sum += num;
+    }
+    Ok(sum)
+}
+
+//main combines both into std error
+fn main()-> Result<(),Box<dyn std::error::Error>>{
   let z = f3();
   println!("z={:?}",z);
+  let lines = read("./data/box_dyn_error.txt")?;
+  let total = sum(lines)?;
+  println!("total={}",total);
+  Ok(())
+
 }
+
