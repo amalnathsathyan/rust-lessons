@@ -14,22 +14,22 @@ use std::fmt::Formatter;
 impl std::error::Error for MathError {}
 impl std::fmt::Display for MathError {
     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f,"math error {:?}",self)
+        write!(f, "math error {:?}", self)
     }
 }
 
 impl std::error::Error for ParseError {}
 impl std::fmt::Display for ParseError {
-     fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> { 
-         write!(f,"parse error {:?}",self)
-     }
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result<(), std::fmt::Error> {
+        write!(f, "parse error {:?}", self)
+    }
 }
 
-fn f1()-> Result<u32, MathError>{
+fn f1() -> Result<u32, MathError> {
     Err(MathError::DivByZero)
 }
 
-fn f2() -> Result<u32, ParseError>{
+fn f2() -> Result<u32, ParseError> {
     Err(ParseError::InvalidInt)
 }
 
@@ -38,7 +38,7 @@ fn f2() -> Result<u32, ParseError>{
 //but here is a quick trick:
 // `MathError` & `ParseError` needs to implement `std::error::Error`
 //
-fn f3()-> Result<(),Box<dyn std::error::Error>> {
+fn f3() -> Result<(), Box<dyn std::error::Error>> {
     f1()?;
     f2()?;
     Ok(())
@@ -54,9 +54,8 @@ use std::num::ParseIntError;
 
 use hello_rust::foo::print;
 
-
 //read has std error type
-fn read(src_path:&str) -> Result<Vec<String>,std::io::Error> {
+fn read(src_path: &str) -> Result<Vec<String>, std::io::Error> {
     let mut src_file = File::open(src_path)?;
     let mut data = String::new();
     src_file.read_to_string(&mut data)?;
@@ -65,23 +64,21 @@ fn read(src_path:&str) -> Result<Vec<String>,std::io::Error> {
 }
 
 //sum function has parseinterror type
-fn sum(lines: Vec<String>) -> Result<i32,ParseIntError> {
+fn sum(lines: Vec<String>) -> Result<i32, ParseIntError> {
     let mut sum = 0;
     for line in lines {
-        let num:i32 = line.parse()?;
+        let num: i32 = line.parse()?;
         sum += num;
     }
     Ok(sum)
 }
 
 //main combines both into std error
-fn main()-> Result<(),Box<dyn std::error::Error>>{
-  let z = f3();
-  println!("z={:?}",z);
-  let lines = read("./data/box_dyn_error.txt")?;
-  let total = sum(lines)?;
-  println!("total={}",total);
-  Ok(())
-
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let z = f3();
+    println!("z={:?}", z);
+    let lines = read("./data/box_dyn_error.txt")?;
+    let total = sum(lines)?;
+    println!("total={}", total);
+    Ok(())
 }
-

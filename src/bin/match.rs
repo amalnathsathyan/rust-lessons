@@ -29,31 +29,31 @@ fn main() {
     //range
     match y {
         //also, to see which x we matched we can;
-        i @1..=10 => print!("between one and ten, matched y:{i}"),
-        _ => println!("Other")
+        i @ 1..=10 => print!("between one and ten, matched y:{i}"),
+        _ => println!("Other"),
     }
     //return value from match
     enum Animal {
         Cat,
         Dog,
         Cow,
-        Goat
+        Goat,
     }
     let animal = Animal::Cow;
     let animal_sound = match animal {
         Animal::Cat => "meow",
         Animal::Dog => "woof",
         Animal::Cow => "moo",
-        _ => "?"
+        _ => "?",
     };
     println!("Animal Sound {animal_sound}");
     //match is helpful in making sure all the possible cases are handled, otherwise code won't compile
-    
+
     //Options
     let x: Option<i32> = Some(10);
     match x {
         Some(v) => println!("Some v: {v}"),
-        None => println!("None")
+        None => println!("None"),
     }
 
     //Result
@@ -61,7 +61,6 @@ fn main() {
     let res: Result<u32, String> = Ok(10);
     match res {
         Ok(v) => println!("Ok val {v}"),
-        Err(msg)=> println!("Err {msg}")
+        Err(msg) => println!("Err {msg}"),
     }
-
 }

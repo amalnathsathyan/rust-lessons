@@ -51,8 +51,8 @@
 
 //moved above code to seperate files in src/
 
-use hello_rust::my;
 use hello_rust::foo;
+use hello_rust::my;
 
 fn main() {
     my::print();
