@@ -72,10 +72,11 @@ fn main() {
     //in the previous case, we had the compile function defined,
     //alternatively we can all test like this
     println!("Test Solidity: {}", sol.test("hello.sol"));
+    //since there are no specific implementation for 
     println!("Test Vyper: {}", vyp.test("hello.vy"));
     
 }
 
 //to show an another example, let's create a trait called Test
-//we can demostrate the `default implementation`
+//we can demostrate the `default implementation` - line 16
 
