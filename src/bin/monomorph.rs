@@ -40,6 +40,7 @@ fn get_x_u32(p: Point<u32>) -> u32 {
 // Thus, Monomorphization create a lot of duplicate code, can result in more compilation time
 // Also it increases the size of the binary
 // However, the upside is, it doesn't affect the runtime, as of the concrete types are generated while compiling
+// So it has zero impact on the perfomance of your code.
 
 fn main(){
     let p0: Point<i32> = Point { x: 0, y: -1 };
